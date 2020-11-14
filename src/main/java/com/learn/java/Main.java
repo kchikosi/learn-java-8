@@ -34,29 +34,36 @@ public class Main {
         boolean allMatch = people.stream()
                 .allMatch(person -> person.getAge() <= 55);
         System.out.println(allMatch);
+		
         //any match, returns boolean
         System.out.println("=== ANY MATCH ===");
         boolean anyMatch = people.stream()
                 .anyMatch(person -> person.getAge() == 100);
         System.out.println(anyMatch);
+		
         //none match, returns boolean
         System.out.println("=== NONE MATCH ===");
-        boolean noneMatch = people.stream()
+        boolean noneMatch =
+                people.stream()
                 .noneMatch(person -> person.getName().equals("John"));
         System.out.println(noneMatch);
+		
         //max
         System.out.println("=== MAX ===");
         people.stream()
                 .max(Comparator.comparing(Person::getAge))
                 .ifPresent(System.out::println);
+				
         //min
         System.out.println("=== MIN ===");
         people.stream()
                 .min(Comparator.comparing(Person::getAge))
                 .ifPresent(System.out::println);
+				
         //group
         System.out.println("=== GROUP BY ===");
-        Map<Gender, List<Person>> groupByGender = people.stream()
+        Map<Gender, List<Person>> groupByGender =
+                people.stream()
                 .collect(Collectors.groupingBy(Person::getGender));
         groupByGender.forEach((gender, people1) -> {
             System.out.println(gender);
@@ -70,7 +77,6 @@ public class Main {
                 .filter(person -> person.getGender().equals(Gender.FEMALE))
                 .max(Comparator.comparing(Person::getAge))
                 .map(Person::getName);
-//        System.out.println(oldestFemale);
         oldestFemale.ifPresent(System.out::println);
     }
 
