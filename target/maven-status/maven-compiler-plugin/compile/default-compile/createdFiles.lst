@@ -1,5 +1,7 @@
-com\learn\java\Main.class
-com\learn\java\streams\SimpleStreamExample.class
+com\learn\java\beans\Car.class
 com\learn\java\streams\BinaryGap.class
 com\learn\java\enums\Gender.class
 com\learn\java\beans\Person.class
+com\learn\java\Main.class
+com\learn\java\streams\SimpleStreamExample.class
+com\learn\java\beans\Insurance.class
