@@ -1,6 +1,5 @@
 package com.learn.java.beans;
 
-import com.learn.java.enums.Gender;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +15,7 @@ class PersonTest {
 
     @BeforeEach
     void setUp() {
-        person = new Person("Kotsanai", 55, Gender.MALE);
+        person = new Person("Kotsanai", 55, Person.Gender.MALE);
         car = new  Car("Nissan Murano", "2016");
         insurance = new Insurance("Progressive");
         personOptional = Optional.of(person);
@@ -29,7 +28,7 @@ class PersonTest {
     }
 
     @Test
-    void test_person_has_no_car_hence_no_insurance() {
+    void test_this_person_has_no_car_hence_no_insurance() {
         assertThrows(NullPointerException.class, () -> personOptional.flatMap(Person::getCar));
         assertThrows(NullPointerException.class, () -> personOptional.flatMap(Person::getCar).flatMap(Car::getInsurance));
         assertThrows(NullPointerException.class, () -> personOptional.flatMap(Person::getCar).flatMap(Car::getInsurance).map(Insurance::getName));

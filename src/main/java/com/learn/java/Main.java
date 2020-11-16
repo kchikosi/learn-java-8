@@ -1,7 +1,6 @@
 package com.learn.java;
 
 import com.learn.java.beans.Person;
-import com.learn.java.enums.Gender;
 
 import java.util.Comparator;
 import java.util.List;
@@ -18,7 +17,7 @@ public class Main {
         //filter
         System.out.println("=== FEMALES ===");
         List<Person> females = people.stream()
-                .filter(person -> person.getGender().equals(Gender.FEMALE))
+                .filter(person -> person.getGender().equals(Person.Gender.FEMALE))
                 .collect(Collectors.toList());
         females.forEach(System.out::println);
 
@@ -62,7 +61,7 @@ public class Main {
 				
         //group
         System.out.println("=== GROUP BY ===");
-        Map<Gender, List<Person>> groupByGender =
+        Map<Person.Gender, List<Person>> groupByGender =
                 people.stream()
                 .collect(Collectors.groupingBy(Person::getGender));
         groupByGender.forEach((gender, people1) -> {
@@ -74,7 +73,7 @@ public class Main {
         //find oldest female's name
         System.out.println("=== THE OLDEST FEMALE ===");
         Optional<String> oldestFemale = people.stream()
-                .filter(person -> person.getGender().equals(Gender.FEMALE))
+                .filter(person -> person.getGender().equals(Person.Gender.FEMALE))
                 .max(Comparator.comparing(Person::getAge))
                 .map(Person::getName);
         oldestFemale.ifPresent(System.out::println);
@@ -82,11 +81,11 @@ public class Main {
 
     private static List<Person> getPeople() {
         return List.of(
-                new Person("Kotsanai", 55, Gender.MALE),
-                new Person("Anna", 45, Gender.FEMALE),
-                new Person("Jonathan", 26, Gender.MALE),
-                new Person("Fungai", 23, Gender.FEMALE),
-                new Person("Johannes", 16, Gender.MALE)
+                new Person("Kotsanai", 55, Person.Gender.MALE),
+                new Person("Anna", 45, Person.Gender.FEMALE),
+                new Person("Jonathan", 26, Person.Gender.MALE),
+                new Person("Fungai", 23, Person.Gender.FEMALE),
+                new Person("Johannes", 16, Person.Gender.MALE)
         );
     }
 }

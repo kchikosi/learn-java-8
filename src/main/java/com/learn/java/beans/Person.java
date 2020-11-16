@@ -1,6 +1,5 @@
 package com.learn.java.beans;
 
-import com.learn.java.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -21,4 +20,5 @@ public class Person {
         this.age = age;
         this.gender = gender;
     }
+    public enum Gender {MALE, FEMALE}
 }

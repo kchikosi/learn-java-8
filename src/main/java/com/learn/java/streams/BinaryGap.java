@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class BinaryGap {
@@ -36,11 +37,10 @@ public class BinaryGap {
         System.out.print("Sequence list : ");
         stream.forEach(s -> System.out.print(s + " ")); //string format
 
-        int max = Arrays.stream(sequence)
+        System.out.print("\nLongest sequence is: ");
+        Optional<Integer> longestSequence = Arrays.stream(sequence)
                 .map(String::length)
-                .max(Integer::compareTo)
-                .get();//TODO: Fix 'Optional.get()' without 'isPresent()' check
-
-        System.out.println("\nMax is: " + max);
+                .max(Integer::compareTo);
+        longestSequence.ifPresent(System.out::println);
     }
 }
